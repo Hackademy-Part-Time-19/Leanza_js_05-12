@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./rubrica.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Actor&family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Rubrica</title>
+</head>
+
+<body>
+    <div id="containerPopup" class="containerPopup">
+        <div class="iconClosePopup">
+            <i onclick="chiudiModale()" class="fa fa-close"></i>
+        </div>
+        <div class="cardPopup">
+            <div class="titoloPopup">
+                <h4>Nuovo Contatto</h4>
+            </div>
+            <div class="inputPopup">
+                <div class="inputNomePopup">
+                    <i class="fa fa-search" style="font: size 20px;color: white;"></i>
+                    <input class="text" style="font-size: 14px;" type="text" placeholder="Nome Contatto">
+                </div>
+                <div class="inputCognomePopup">
+                    <i class="fa fa-search" style="font: size 20px;color: white;"></i>
+                    <input class="text" style="font-size: 14px;" type="text" placeholder="Cognome Contatto">
+                </div>
+                <div class="inputNumeroPopup">
+                    <i class="fa fa-search" style="font: size 20px;color: white;"></i>
+                    <input class="text" style="font-size: 14px;" type="text" placeholder="Numero Contatto">
+                </div>
+            </div>
+            <div class="footerPopup">
+                <div class="buttonSalva">
+                    <h3>Salva contatto</h3>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+    <div class="containerPadre">
+        <div class="sezioneUtente">
+            <div class="myProfile">
+                <div class="myProfileImg">
+                    <img src="./Immagine 2023-08-02 145509 (1).png" alt="user">
+                </div>
+                <div class="myProfileName">
+                    <h4>Luca Leanza</h4>
+                </div>
+            </div>
+            <div class="searchAndAdd">
+                <div class="search">
+                    <i class="fa fa-search" style="font: size 20px;color: white;"></i>
+                    <input class="inputSearch" type="text" placeholder="Cerca contatto">
+                </div>
+                <div onclick="apriModale ()" class="addContactIcon">
+                    <i class="fa fa-plus-circle" style="font-size:22px;color: white;cursor: pointer;"></i>
+                </div>
+
+            </div>
+            <div class="alfabeto">
+
+            </div>
+        </div>
+        <div class="sezioneContatti">
+            <div class="contattoRubrica">
+                <div class="nomeContatto">
+                    <h5>Eugenio Macrì</h5>
+
+                </div>
+                <div class="numeroContatto">
+                    <h5>3334443335</h5>
+
+                </div>
+                <div class="buttonContatti">
+                    <div class="buttonEdit">
+                        edit
+                    </div>
+                    <div class="buttonDelete">
+                        <i class="fa fa-remove"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="sezioneContatti">
+                <div class="contattoRubrica">
+                    <div class="nominativoContattoEdit">
+                        <div class="inputNomeEdit">
+                            <input class="inputSearch" style="font-size: 14px;" type="text" placeholder="Nome">
+                        </div>
+                        <div class="inputCognomeEdit">
+                            <input class="inputSearch" style="font-size: 14px;" type="text" placeholder="Cognome">
+                        </div>
+                    </div>
+                    <div class="numeroContattoEdit">
+                        <input class="inputSearch" style="font-size: 14px;" type="text" placeholder="Numero">
+                    </div>
+                    <div class="sezioneButtonSave">
+                        <div class="buttonSaveEdit">
+                            Save
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script src="./rubrica.js"></script>
+</body>
+
+</html>

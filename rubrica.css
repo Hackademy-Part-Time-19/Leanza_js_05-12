@@ -1,0 +1,433 @@
+* {
+    font-family: "montserrat", sans-serif;
+}
+
+
+
+.containerPadre {
+    display: flex;
+    background-color: black;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sezioneUtente {
+    background-color: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(255, 255, 255, 0.3) ;
+}
+
+.sezioneContatti {
+    background-color: none;
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+.contattoRubrica{
+    width: 100%;
+    height: 80px;
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.3);
+}
+.nomeContatto{
+    flex: 1;
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+    font-size: 18px;
+}
+.nominativoContattoEdit{
+    flex: 1;
+    background-color: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+    width: 30px;
+    font-size: 18px;
+}
+.inputNomeEdit{
+    background-color: #202020;
+    height: 40px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.inputNomeEdit input{
+    border: none;
+    height: 90%;
+    width: 70%;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    background-color: #202020;
+}
+
+.inputCognomeEdit{
+    background-color: #202020;
+    height: 40px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.inputCognomeEdit input{
+    border: none;
+    height: 90%;
+    width: 70%;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    background-color: #202020;
+}
+.inputNumeroEdit{
+    background-color: #202020;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.numeroContatto{
+    flex: 1;
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+    font-size: 18px;
+}
+.numeroContattoEdit{
+    flex: 1;
+    background-color: yellow;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+    width: 30px;
+    font-size: 18px;
+}
+.buttonContatti{
+    flex: 1;
+    background-color: none;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+
+}
+
+.sezioneButtonSave{
+    flex: 1;
+    background-color: purple;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+    margin-right: 20px;
+
+
+}
+
+.buttonEdit{
+    width: 100px;
+    height: 40px;
+    background-color: #202020;
+    border-radius: 10px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonSaveEdit{
+    width: 100px;
+    height: 40px;
+    background-color: #202020;
+    border-radius: 10px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.buttonDelete{
+    width: 40px;
+    height: 40px;
+    background-color: #202020;
+    border-radius: 100%;
+    margin-left: 10px ;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+
+
+.myProfile {
+    flex: 1;
+    background-color: none;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.myProfile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+
+.myProfileName {
+    margin-left: 20px;
+    color: white;
+}
+
+.searchAndAdd {
+    flex: 1;
+    background-color: none;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.search {
+    flex: 7;
+    height: 60%;
+    background-color: #404040;
+    border-radius: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.search input {
+    border: none;
+    height: 90%;
+    width: 70%;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
+    font-size: 15px;
+    background-color: #404040;
+}
+
+.addContactIcon {
+    flex: 1;
+    background-color: none;
+    height: 60%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.alfabeto {
+    flex: 8;
+    background-color: none;
+    height: 100%;
+}
+
+.containerPopup {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.cardPopup {
+    background-color: #202020;
+    height: 70vh;
+    width: 380px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.titoloPopup {
+    flex: 1;
+    background-color: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: white;
+    font-size: 18px;
+
+}
+
+.inputPopup {
+    flex: 5;
+    background-color: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.inputNomePopup {
+    padding-left: 20px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: start;
+    align-items: center;
+    background-color: #404040;
+    width: 80%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.inputCognomePopup {
+    padding-left: 20px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: start;
+    align-items: center;
+    background-color: #404040;
+    width: 80%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.inputNumeroPopup {
+    padding-left: 20px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: start;
+    align-items: center;
+    background-color: #404040;
+    width: 80%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.inputNomePopup input {
+    border: none;
+    height: 90%;
+    width: 70%;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    font-size: 15px;
+    background-color: #404040;
+}
+
+.inputCognomePopup input {
+    border: none;
+    height: 90%;
+    width: 70%;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    font-size: 15px;
+    background-color: #404040;
+}
+
+.inputNumeroPopup input {
+    border: none;
+    height: 90%;
+    width: 70%;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    font-size: 15px;
+    background-color: #404040;
+}
+
+
+
+
+.footerPopup {
+    flex: 4;
+    background-color: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.buttonSalva {
+    border: none;
+    width: 90%;
+    height: 40px;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(5, 94, 5);
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.buttonSalva:hover {
+    background-color: rgb(5, 94, 5, 0.7);
+    scale: 1.03;
+    transition: ease-in-out 0.2s;
+}
+
+.iconClosePopup {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: rgba(255, 0, 0, 0.479);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.iconClosePopup:hover {
+    scale: 1.03;
+    transition: ease-in-out 0.2s;
+}
