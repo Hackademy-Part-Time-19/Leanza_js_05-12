@@ -47,10 +47,11 @@
     font-size: 18px;
 }
 .nominativoContattoEdit{
+    background-color: none;
     flex: 1;
     background-color: none;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     color: white;
     font-size: 20px;
@@ -97,12 +98,6 @@
     font-size: 15px;
     background-color: #202020;
 }
-.inputNumeroEdit{
-    background-color: #202020;
-    height: 40px;
-    border-radius: 10px;
-}
-
 .numeroContatto{
     flex: 1;
     background-color: none;
@@ -114,17 +109,35 @@
     height: 100%;
     font-size: 18px;
 }
-.numeroContattoEdit{
+.areaNumeroContatto{
     flex: 1;
-    background-color: yellow;
+    background-color: none;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     color: white;
-    font-size: 20px;
-    height: 100%;
-    width: 30px;
     font-size: 18px;
+    height: 100%;
+}
+.numeroContattoEdit{
+    background-color: #202020;
+    height: 40px;
+    width: 50%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.numeroContattoEdit input{
+    border: none;
+    height: 90%;
+    width: 70%;
+    background-color: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    background-color: #202020;
 }
 .buttonContatti{
     flex: 1;
@@ -140,24 +153,20 @@
 
 .sezioneButtonSave{
     flex: 1;
-    background-color: purple;
+    background-color: none;
     display: flex;
     justify-content: end;
     align-items: center;
     color: white;
-    font-size: 20px;
     height: 100%;
-    margin-right: 20px;
-
-
 }
 
 .buttonEdit{
-    width: 100px;
+    width: 120px;
     height: 40px;
     background-color: #202020;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,7 +176,19 @@
     height: 40px;
     background-color: #202020;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+.buttonAnnulla{
+    width: 130px;
+    height: 40px;
+    background-color: rgba(255, 0, 0, 0.381);
+    border: #202020 solid 1px;
+    border-radius: 10px;
+    font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
