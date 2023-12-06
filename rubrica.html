@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
     <div id="containerPopup" class="containerPopup">
         <div class="iconClosePopup">
             <i onclick="chiudiModale()" class="fa fa-close"></i>
@@ -22,21 +23,20 @@
                 <h4>Nuovo Contatto</h4>
             </div>
             <div class="inputPopup">
-                <div class="inputNomePopup">
-                    <i class="fa fa-search" style="font: size 20px;color: white;"></i>
-                    <input class="text" style="font-size: 14px;" type="text" placeholder="Nome Contatto">
+                <div id="inputNomePopup" class="inputNomePopup">
+                    <input id="nome" class="text" style="font-size: 14px;" type="text" placeholder="Nome Contatto">
                 </div>
-                <div class="inputCognomePopup">
-                    <i class="fa fa-search" style="font: size 20px;color: white;"></i>
-                    <input class="text" style="font-size: 14px;" type="text" placeholder="Cognome Contatto">
+                <div id="inputCognomePopup" class="inputCognomePopup">
+                    <input id="cognome" class="text" style="font-size: 14px;" type="text"
+                        placeholder="Cognome Contatto">
                 </div>
-                <div class="inputNumeroPopup">
-                    <i class="fa fa-search" style="font: size 20px;color: white;"></i>
-                    <input class="text" style="font-size: 14px;" type="text" placeholder="Numero Contatto">
+                <div id="inputNumeroPopup" class="inputNumeroPopup">
+                    <input id="telefono" class="text" style="font-size: 14px;" type="text"
+                        placeholder="Numero Contatto">
                 </div>
             </div>
             <div class="footerPopup">
-                <div class="buttonSalva">
+                <div onclick="aggiungiContatto()" class="buttonSalva">
                     <h3>Salva contatto</h3>
                 </div>
 
@@ -45,9 +45,15 @@
         </div>
     </div>
 
-    </div>
+
+
+
+
+
 
     <div class="containerPadre">
+
+
         <div class="sezioneUtente">
             <div class="myProfile">
                 <div class="myProfileImg">
@@ -60,7 +66,7 @@
             <div class="searchAndAdd">
                 <div class="search">
                     <i class="fa fa-search" style="font: size 20px;color: white;"></i>
-                    <input class="inputSearch" type="text" placeholder="Cerca contatto">
+                    <input oninput="cercaContatto()" id="inputSearch" class="inputSearch" type="text" placeholder="Cerca contatto">
                 </div>
                 <div onclick="apriModale ()" class="addContactIcon">
                     <i class="fa fa-plus-circle" style="font-size:22px;color: white;cursor: pointer;"></i>
@@ -71,58 +77,19 @@
 
             </div>
         </div>
-        <div class="sezioneContatti">
-            <div class="contattoRubrica">
-                <div class="nomeContatto">
-                    <h5>Eugenio Macrì</h5>
-
-                </div>
-                <div class="numeroContatto">
-                    <h5>3334443335</h5>
-
-                </div>
-                <div class="buttonContatti">
-                    <div class="buttonEdit">
-                        edit
-                    </div>
-                    <div class="buttonDelete">
-                        <i class="fa fa-remove"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="sezioneContatti">
-                <div class="contattoRubrica">
-                    <div class="nominativoContattoEdit">
-                        <div class="inputNomeEdit">
-                            <input class="inputSearch" style="font-size: 14px;" type="text" placeholder="Nome">
-                        </div>
-                        <div class="inputCognomeEdit">
-                            <input class="inputSearch" style="font-size: 14px;" type="text" placeholder="Cognome">
-                        </div>
-                    </div>
-                    <div class="areaNumeroContatto">
-                        <div class="numeroContattoEdit">
-                            <input class="inputSearch" style="font-size: 14px;" type="text" placeholder="Numero">
-                        </div>
-                    </div>
-                    <div class="sezioneButtonSave">
-                        <div class="buttonAnnulla">
-                            Annulla
-                        </div>
-                        <div class="buttonSaveEdit">
-                            Save
-                        </div>
-                        
-                    </div>
 
 
-                </div>
+        <div id="sezioneContatti" class="sezioneContatti">
+            <div id="notFound" class="notFound">
+                <h5>Contatto non trovato</h5>
             </div>
 
 
 
 
 
+        </div>
+    </div>
 
 
 
@@ -151,7 +118,8 @@
 
 
 
-            <script src="./rubrica.js"></script>
+        <script src="./rubrica.js"></script>
 </body>
 
 </html>
+

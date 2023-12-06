@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubrica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btnEdit {
+            height: 35px;
+            border-radius: 10px;
+            background-color: #606060;
+            width: 100px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: ease-in-out .1s;
+            box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
+        }
+
+        .btnEdit:hover {
+            transform: scale(1.02);
+        }
+
+        .buttonCta {
+            width: 95%;
+            height: 40px;
+            border-radius: 20;
+            background-color: black;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: ease-in-out .1s;
+            box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
+        }
+
+        .buttonCta:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body style="background-color: black;">
+
+    <div id="modaleAggiunta"
+        style="position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);display: flex;align-items: center;justify-content: center;display: none;">
+        <div onclick="chiudiModaleAggiunta()" style="position: absolute; top:30px; right: 30px;cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 24 24">
+                <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243" />
+            </svg>
+        </div>
+        <div
+            style="height: 60vh;width: 350px;background-color: #202020;border-radius:30px;padding: 25px;display: flex;flex-direction: column;">
+            <h3 style="color: white;text-align: center;margin-top: 10px;">Aggiungi contatto</h3>
+            <div style="background-color: rgba(255,255,255,0);flex:6">
+                <div>
+                    <h5
+                        style="color: white;margin-right: 10px; margin-left: 10px;margin-bottom: 10px;margin-top: 30px;font-weight: 400;">
+                        Nome</h5>
+                    <div style="display: flex;align-items: center;justify-content: center;">
+
+                        <input id="inputNome" placeholder="Nome"
+                            style="height: 35px;border-radius: 10px;padding-left: 20px;background-color: #606060; border: none;width: 90%;outline: none;color: white;" />
+                    </div>
+                </div>
+                <div>
+                    <h5
+                        style="color: white;margin-right: 10px; margin-left: 10px;margin-bottom: 10px;margin-top: 30px;font-weight: 400;">
+                        Cognome</h5>
+                    <div style="display: flex;align-items: center;justify-content: center;">
+
+                        <input id="inputCognome" placeholder="Congome"
+                            style="height: 35px;border-radius: 10px;padding-left: 20px;background-color: #606060; border: none;width: 90%;outline: none;color: white;" />
+                    </div>
+                </div>
+                <div>
+                    <h5
+                        style="color: white;margin-right: 10px; margin-left: 10px;margin-bottom: 10px;margin-top: 30px;font-weight: 400;">
+                        Numero di telefono</h5>
+                    <div style="display: flex;align-items: center;justify-content: center;">
+
+                        <input id="inputNumero" placeholder="Numero"
+                            style="height: 35px;border-radius: 10px;padding-left: 20px;background-color: #606060; border: none;width: 90%;outline: none;color: white;" />
+                    </div>
+                </div>
+            </div>
+            <div
+                style="background-color: rgba(255,255,255,0);flex:1; display: flex;align-items: center;justify-content: center;">
+                <div onclick="aggiungiContatto()" class="buttonCta">
+                    <h5 style="color: white;font-weight: 600;">Salva</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="display: flex; height: 100vh;">
+        <div style="background-color: black;flex:1; border-right: 1px solid rgba(255,255,255,0.5);">
+
+            <div style="display: flex;">
+
+                <img src="data:image/jpeg;base64,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"
+                    alt="Avatar"
+                    style="width: 55px;height: 55px;border-radius: 50%;margin-left: 20px;margin-top: 20px;border: 2.5px solid white;">
+                <h1 style="color: white;font-size: 25px;margin-left: 20px;margin-top: 35px;">Yuri Valente</h1>
+            </div>
+            <div style="display: flex; margin-left: 20px;margin-top: 20px;">
+
+                <div style="width: 230px; background-color: #303030; height: 45px;border-radius: 10px;display: flex;">
+                    <i class="fa fa-search"
+                        style="font-size:20px; color:rgba(255,255,255,0.3); margin-left: 15px;margin-top: 10px;"></i>
+
+                    <input oninput="ricercaUtenti()" id="inputSearch" placeholder="Cerca..."
+                        style="height: 35px;border-radius: 10px;padding-left: 5px; border: none;width: 80%;margin-left: 10px;margin-top: 3px; background-color: #303030; color: white;outline: none;" />
+                </div>
+                <div onclick="apriModaleAggiunta()" style="margin-left: 25px;margin-top: 7px;cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+                        <g fill="white" fill-rule="evenodd" clip-rule="evenodd">
+                            <path
+                                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12Zm10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16Z" />
+                            <path
+                                d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4V7Z" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="containerContatti" style="background-color: black;flex:3.5; padding: 30px;padding-top: 20px;">
+
+
+            <p id="noResultP"
+                style="color: rgba(255, 255, 255, 0.6);font-size: 20px;text-align: center;font-weight: 500;margin-top: 30px;display: none;">
+                Nessun risultato</p>
+        </div>
+    </div>
+
+
+    <script>
+        function apriModaleAggiunta() {
+            document.getElementById("modaleAggiunta").style.display = "flex";
+        }
+        function chiudiModaleAggiunta() {
+            document.getElementById("modaleAggiunta").style.display = "none";
+        }
+        let contatti = [];
+
+        function ricercaUtenti() {
+            console.log("ciao");
+            let inputSearch = document.getElementById("inputSearch").value;
+
+            if (!inputSearch) {
+                for (let i = 0; i < contatti.length; i++) {
+                    document.getElementById(`container-${i}-contatto`).style.display = "block";
+                }
+                document.getElementById("noResultP").style.display = "none";
+                return;
+            }
+
+            let listaContatti = contatti.filter((contatto) => {
+                return contatto.nome.startsWith(inputSearch) || contatto.cognome.startsWith(inputSearch) || contatto.numero.startsWith(inputSearch);
+            })
+            console.log(listaContatti);
+            let listaIdContatti = listaContatti.map((contatto) => {
+                return contatto.indice;
+            })
+
+            console.log(listaIdContatti);
+            if (listaIdContatti.length == 0) {
+                document.getElementById("noResultP").style.display = "block";
+            } else {
+                document.getElementById("noResultP").style.display = "none";
+            }
+            for (let i = 0; i < contatti.length; i++) {
+
+
+                if (!listaIdContatti.includes(parseInt(id))) {
+                    document.getElementById(`container-${i}-contatto`).style.display = "none";
+                }
+            }
+
+
+        }
+
+
+        let indiceConttatto = 0;
+
+        function aggiungiContatto() {
+            let nome = document.getElementById("inputNome").value
+            let cognome = document.getElementById("inputCognome").value
+            let numero = document.getElementById("inputNumero").value
+
+            if (!nome || !cognome || !numero) {
+
+                if (!nome) {
+                    document.getElementById("inputNome").style.border = "1px solid red";
+                }
+
+                if (!cognome) {
+                    document.getElementById("inputCognome").style.border = "1px solid red";
+                }
+
+                if (!numero) {
+                    document.getElementById("inputNumero").style.border = "1px solid red";
+                }
+
+                return;
+            }
+
+
+            let contatto = {
+                nome: nome,
+                cognome: cognome,
+                numero: numero,
+                indice: indiceConttatto
+            }
+
+
+            contatti.push(contatto);
+
+
+
+            document.getElementById("containerContatti").innerHTML += `<div id="container-${indiceConttatto}-contatto">
+                <div id="div-${indiceConttatto}-contatto"
+                    style="display: flex; border-bottom: 1px solid rgba(255,255,255,0.4); height: 60px;margin-top: 15px;">
+                    <div style="flex: 1;background-color: black;display: flex;">
+                        <h4 id="${indiceConttatto}-nome" style="color: white;margin-left: 10px;margin-top: 20px;">${nome}</h4>
+                        <h4 id="${indiceConttatto}-cognome" style="color: white;margin-left: 10px;margin-top: 20px;">${cognome}</h4>
+                    </div>
+                    <div style="flex: 1;background-color: black;">
+                        <h4 id="${indiceConttatto}-numero" style="color: white;margin-left: 10px;margin-top: 20px;">${numero}</h4>
+                    </div>
+                    <div style="flex: 1;background-color: black;display: flex;justify-content: flex-end;">
+
+
+                        <div onClick="modificaContatto(${indiceConttatto})" class="btnEdit">
+                            <h5 style="color: white;">Edit</h5>
+                        </div>
+                        <div  onClick="eliminaContatto(${indiceConttatto})" style="cursor: pointer;margin-top: 5px;margin-left: 20px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                                <path fill="none" stroke="#ff6c6c" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="div-${indiceConttatto}-modifica-contatto"
+                    style="display: flex; border-bottom: 1px solid rgba(255,255,255,0.4); height: 60px;margin-top: 15px;display:none">
+                    <div style="flex: 1;background-color: black;display: flex;">
+                        <input id="${indiceConttatto}-input-nome" placeholder="Nome"
+                            style="height: 35px;border-radius: 10px;padding-left: 20px;background-color: #606060; border: none;width: 30%;outline: none;color: white;" />
+                        <input id="${indiceConttatto}-input-cognome" placeholder="Cognome"
+                            style="height: 35px;border-radius: 10px;padding-left: 20px;background-color: #606060; border: none;width: 30%;outline: none;color: white;margin-left: 10px;" />
+                    </div>
+                    <div style="flex: 1;background-color: black;">
+                        <input id="${indiceConttatto}-input-numero" placeholder="Numero"
+                            style="height: 35px;border-radius: 10px;padding-left: 20px;background-color: #606060; border: none;width: 60%;outline: none;color: white;" />
+                    </div>
+                    <div style="flex: 1;background-color: black;display: flex;justify-content: flex-end;">
+
+                        <div onClick="annullaModificaContatto(${indiceConttatto})" class="btnEdit"
+                            style="margin-right: 20px;background-color: black;border: 1px solid rgba(255,255,255,0.3)">
+                            <h5 style="color: white;">Annulla</h5>
+                        </div>
+                        <div onClick="salvaModificaContatto(${indiceConttatto})" class="btnEdit">
+                            <h5 style="color: white;">Salva</h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>`;
+
+            chiudiModaleAggiunta();
+            indiceConttatto++;
+            document.getElementById("inputNome").value = "";
+            document.getElementById("inputCognome").value = "";
+            document.getElementById("inputNumero").value = "";
+        }
+
+
+        function modificaContatto(indice) {
+            document.getElementById(`div-${indice}-contatto`).style.display = "none";
+            document.getElementById(`div-${indice}-modifica-contatto`).style.display = "flex";
+
+            let nome = document.getElementById(`${indice}-nome`).innerHTML;
+            let cognome = document.getElementById(`${indice}-cognome`).innerHTML;
+            let numero = document.getElementById(`${indice}-numero`).innerHTML;
+
+            document.getElementById(`${indice}-input-nome`).value = nome;
+            document.getElementById(`${indice}-input-cognome`).value = cognome;
+            document.getElementById(`${indice}-input-numero`).value = numero;
+        }
+
+        function annullaModificaContatto(indice) {
+            document.getElementById(`div-${indice}-contatto`).style.display = "flex";
+            document.getElementById(`div-${indice}-modifica-contatto`).style.display = "none";
+        }
+
+        function eliminaContatto(indice) {
+            document.getElementById(`container-${indice}-contatto`).remove();
+        }
+
+        function salvaModificaContatto(indice) {
+            let inputNome = document.getElementById(`${indice}-input-nome`).value;
+            let inputCognome = document.getElementById(`${indice}-input-cognome`).value;
+            let inputNumero = document.getElementById(`${indice}-input-numero`).value;
+
+            document.getElementById(`${indice}-nome`).innerHTML = inputNome;
+            document.getElementById(`${indice}-cognome`).innerHTML = inputCognome;
+            document.getElementById(`${indice}-numero`).innerHTML = inputNumero;
+
+
+            document.getElementById(`div-${indice}-contatto`).style.display = "flex";
+            document.getElementById(`div-${indice}-modifica-contatto`).style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
