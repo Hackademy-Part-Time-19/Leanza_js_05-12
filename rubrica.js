@@ -30,17 +30,12 @@ function aggiungiContatto() {
         return;
     }
 
-
-
     let nuovoContatto = {
         nome: nome,
         cognome: cognome,
         telefono: telefono,
         indice: indiceContatto
     }
-
-
-
 
     listaContatti.push(nuovoContatto);
 
@@ -97,6 +92,7 @@ function aggiungiContatto() {
 
 }
 
+
 function modificaContatto(indice) {
     document.getElementById(`contatto-${indice}-rubrica`).style.display = "none";
     document.getElementById(`div-${indice}-modifica-contatto`).style.display = "flex";
@@ -108,6 +104,16 @@ function modificaContatto(indice) {
     document.getElementById(`${indice}-input-nome`).value = nome;
     document.getElementById(`${indice}-input-cognome`).value = cognome;
     document.getElementById(`${indice}-input-telefono`).value = numero;
+
+    // aggiornare valori oggetto listaContatti
+    for (let i = 0; i < listaContatti.length; i++) {
+        if (listaContatti[i].indice == indice) {
+            listaContatti[i].nome = nome;
+            listaContatti[i].cognome = cognome;
+            listaContatti[i].telefono = numero;
+        }
+    }
+    console.log(listaContatti);
 }
 
 function annullaModifica(indice) {
@@ -126,11 +132,30 @@ function salvaModifiche(indice) {
 
     document.getElementById(`contatto-${indice}-rubrica`).style.display = "flex";
     document.getElementById(`div-${indice}-modifica-contatto`).style.display = "none";
+
+    // aggiornare valori oggetto listaContatti
+    for (let i = 0; i < listaContatti.length; i++) {
+        if (listaContatti[i].indice == indice) {
+            listaContatti[i].nome = nome;
+            listaContatti[i].cognome = cognome;
+            listaContatti[i].telefono = numero;
+        }
+        console.log(listaContatti);
+    }
 }
 
 function rimuoviContatto(indice) {
-    document.getElementById(`contatto-${indice}-rubrica`).remove();
+    let contattoDaRimuovere = document.getElementById(`contatto-${indice}-rubrica`);
+    contattoDaRimuovere.remove();
+
+    listaContatti = listaContatti.filter(contatto => contatto.indice !== indice);
+
+    listaContatti.forEach((contatto, index) => {
+        contatto.indice = index;
+    });
 }
+
+
 
 function cercaContatto() {
     let ricerca = document.getElementById("inputSearch").value.toLowerCase();
@@ -157,7 +182,71 @@ function cercaContatto() {
     } else {
         document.getElementById("notFound").style.display = "none";
     }
+
+    if (ricerca == "") {
+        document.getElementById("notFound").style.display = "none";
+    }
 }
+
+function filtraPerLettera(lettera) {
+    let ricerca = lettera.toLowerCase();
+    let nessunaCorrispondenza = true;
+
+    // Ripristina lo sfondo di tutte le lettere
+    document.querySelectorAll('.letteraAlfabeto').forEach((elemento) => {
+        elemento.style.background = 'none';
+        elemento.style.color = "white";
+    });
+    // Imposta lo sfondo della lettera cliccata
+    document.getElementById(lettera).style.background = 'white';
+    document.getElementById(lettera).style.color = "black";
+
+    listaContatti.forEach((contatto, indice) => {
+        let elementoContatto = document.getElementById(`contatto-${indice}-rubrica`);
+        let nomeMinuscolo = contatto.nome.toLowerCase();
+        let cognomeMinuscolo = contatto.cognome.toLowerCase();
+
+        if (nomeMinuscolo.startsWith(ricerca) || cognomeMinuscolo.startsWith(ricerca)) {
+            elementoContatto.style.display = "flex";
+            nessunaCorrispondenza = false;
+        } else {
+            elementoContatto.style.display = "none";
+        }
+    })
+    
+
+    if (nessunaCorrispondenza) {
+        document.getElementById("notFound").style.display = "flex";
+    } else {
+        document.getElementById("notFound").style.display = "none";
+    }
+
+    if (ricerca == "") {
+        document.getElementById("notFound").style.display = "none";
+    }
+    
+}
+
+function resetFiltro() {
+    document.getElementById("inputSearch").value = "";
+    document.getElementById("notFound").style.display = "none";
+
+
+    document.querySelectorAll('.letteraAlfabeto').forEach((elemento) => {
+        elemento.style.background = 'none';
+        elemento.style.color = "white";
+    });
+
+    listaContatti.forEach((contatto, indice) => {
+        let elementoContatto = document.getElementById(`contatto-${indice}-rubrica`);
+        elementoContatto.style.display = "flex";
+    }
+    ) 
+
+}
+
+
+
 
 
 
